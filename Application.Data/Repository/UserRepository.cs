@@ -5,10 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Applicationa.Data.DataContext;
-using Applicationa.Model;
+using Application.Data.DataContext;
+using Application.Model;
 
-namespace Applicationa.Data.Repository
+namespace Application.Data.Repository
 {
     public class UserRepository : Repository<User>, IUserRepository
     {

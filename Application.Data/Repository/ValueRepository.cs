@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Applicationa.Data.DataContext;
-using Applicationa.Model;
+using Application.Data.DataContext;
+using Application.Model;
 
-namespace Applicationa.Data.Repository
+namespace Application.Data.Repository
 {
     public class ValueRepository: Repository<Value>, IValueRepository
     {

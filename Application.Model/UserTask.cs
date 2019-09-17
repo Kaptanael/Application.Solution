@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Applicationa.Model
+namespace Application.Model
 {
     [Table("Task")]
     public class UserTask

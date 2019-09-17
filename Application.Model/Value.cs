@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace Applicationa.Model
+namespace Application.Model
 {
     [Table("Value")]
     public class Value

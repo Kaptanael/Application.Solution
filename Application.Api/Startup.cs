@@ -1,8 +1,8 @@
 ﻿using Application.Api.Mapping;
 using Application.Service;
-using Applicationa.Data.DataContext;
-using Applicationa.Data.Repository;
-using Applicationa.Data.UnitOfWork;
+using Application.Data.DataContext;
+using Application.Data.Repository;
+using Application.Data.UnitOfWork;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -15,7 +15,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-namespace Applicationa.Api
+namespace Application.Api
 {
     public class Startup
     {

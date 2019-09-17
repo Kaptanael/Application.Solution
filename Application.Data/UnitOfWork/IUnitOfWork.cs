@@ -1,9 +1,9 @@
-﻿using Applicationa.Data.Repository;
+﻿using Application.Data.Repository;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Applicationa.Data.UnitOfWork
+namespace Application.Data.UnitOfWork
 {
     public interface IUnitOfWork : IDisposable
     {

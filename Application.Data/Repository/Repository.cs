@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Applicationa.Data.DataContext;
+using Application.Data.DataContext;
 
-namespace Applicationa.Data.Repository
+namespace Application.Data.Repository
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
@@ -24,13 +24,15 @@ namespace Applicationa.Data.Repository
         }
 
         public TEntity Update(TEntity entity)
-        {            
+        {
+            _context.Entry(entity).State = EntityState.Modified;
             _context.Update(entity);
             return entity;
         }
 
         public TEntity Delete(TEntity entity)
-        {            
+        {
+            _context.Entry(entity).State = EntityState.Deleted;
             _context.Remove(entity);
             return entity;
         }

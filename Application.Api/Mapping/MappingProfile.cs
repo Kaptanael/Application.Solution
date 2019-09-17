@@ -1,5 +1,6 @@
 ﻿using Application.ViewModel.Task;
-using Applicationa.Model;
+using Application.ViewModel.Value;
+using Application.Model;
 using AutoMapper;
 namespace Application.Api.Mapping
 {
@@ -8,6 +9,10 @@ namespace Application.Api.Mapping
         public MappingProfile()
         {   
             CreateMap<UserTask, TaskForListDto>().ForMember(dest=>dest.UserName, opt => opt.MapFrom(src => src.User.FirstName + " " + src.User.LastName));
+            CreateMap<ValueForCreateDto, Value>();
+            CreateMap<ValueForUpdateDto, Value>();
+            CreateMap<ValueForDeleteDto, Value>();
+            CreateMap<ValueForListDto, Value>();
         }
     }
 }

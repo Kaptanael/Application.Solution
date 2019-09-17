@@ -1,5 +1,7 @@
 ﻿using Application.Service;
 using Application.ViewModel.Value;
+using Application.Model;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,10 +14,13 @@ namespace Application.Api.Controllers
     {
         private readonly IValueService _valueService;        
         private readonly ILogger _logger;
-        public ValuesController(IValueService valueService , ILogger<ValuesController> logger)
+        private readonly IMapper _mapper;
+
+        public ValuesController(IValueService valueService , ILogger<ValuesController> logger, IMapper mapper)
         {
             _valueService = valueService;            
             _logger = logger;
+            _mapper = mapper;
         }
         
         [HttpGet]
@@ -64,12 +69,9 @@ namespace Application.Api.Controllers
                     return BadRequest();
                 }
 
-                if (await _valueService.IsDuplicateAsync(valueForCreateDto.Name))
-                {
-                    return BadRequest("Duplicate");
-                }
-
-                await _valueService.AddAsync(valueForCreateDto);
+                var valueToCreated = _mapper.Map<Value>(valueForCreateDto);
+               
+                await _valueService.AddAsync(valueToCreated);
                 return StatusCode(201);
             }
             catch (Exception ex)
@@ -79,7 +81,7 @@ namespace Application.Api.Controllers
             }
         }
         
-        [HttpPut("{id}")]
+        [HttpPut("updateValue/{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] ValueForUpdateDto valueForUpdateDto)
         {
             try
@@ -87,16 +89,11 @@ namespace Application.Api.Controllers
                 if (!ModelState.IsValid || id!=valueForUpdateDto.Id)
                 {
                     return BadRequest();
-                }
+                }                
 
-                var selectedValue = await _valueService.GetByIdAsync(id);
+                var valueForUpdated = _mapper.Map<Value>(valueForUpdateDto);
 
-                if (selectedValue == null)
-                {
-                    return NotFound();
-                }
-
-                _valueService.Update(valueForUpdateDto);
+                _valueService.Update(valueForUpdated);
                 return NoContent();
             }
             catch (Exception ex)
@@ -118,11 +115,7 @@ namespace Application.Api.Controllers
                     return NotFound();
                 }
 
-                var valueToDeleted = new ValueForDeleteDto
-                {
-                    Id = selectedValue.Id,
-                    Name = selectedValue.Name
-                };                
+                var valueToDeleted = _mapper.Map<Value>(selectedValue);
 
                 var deletedValue = _valueService.Delete(valueToDeleted);
                 return NoContent();

@@ -1,8 +1,8 @@
-﻿using Applicationa.Model;
+﻿using Application.Model;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Applicationa.Data.Repository
+namespace Application.Data.Repository
 {
     public interface ITaskRepository : IRepository<UserTask>
     {

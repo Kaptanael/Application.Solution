@@ -1,8 +1,8 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Applicationa.Model;
+using Application.Model;
 
-namespace Applicationa.Data.Repository
+namespace Application.Data.Repository
 {
     public interface IValueRepository: IRepository<Value>
     {

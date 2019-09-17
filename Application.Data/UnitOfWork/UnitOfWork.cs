@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Applicationa.Data.DataContext;
-using Applicationa.Data.Repository;
+using Application.Data.DataContext;
+using Application.Data.Repository;
 
-namespace Applicationa.Data.UnitOfWork
+namespace Application.Data.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {

@@ -1,7 +1,7 @@
 ﻿using Application.Service;
 using Application.ViewModel.Value;
-using Applicationa.Data.UnitOfWork;
-using Applicationa.Model;
+using Application.Data.UnitOfWork;
+using Application.Model;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,38 +17,21 @@ namespace Application.Service
             _uow = uow;
         }
 
-        public async Task<bool> AddAsync(ValueForCreateDto valueForCreateDto, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<bool> AddAsync(Value value, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var valueToCreate = new Value
-            {
-                Name = valueForCreateDto.Name
-            };
-
-            await _uow.Values.AddAsync(valueToCreate);
+            await _uow.Values.AddAsync(value);
             return await _uow.SaveAsync(cancellationToken) > 0 ? true : false;
         }
 
-        public bool Update(ValueForUpdateDto valueForUpdateDto)
+        public bool Update(Value value)
         {
-            var valueToUpdate = new Value
-            {
-                Id = valueForUpdateDto.Id,
-                Name = valueForUpdateDto.Name
-            };
-
-            var updatedValue = _uow.Values.Update(valueToUpdate);
+            var updatedValue = _uow.Values.Update(value);
             return _uow.Save() > 0 ? true : false;
         }
 
-        public bool Delete(ValueForDeleteDto valueForDeleteDto)
+        public bool Delete(Value value)
         {
-            var valueToDelete = new Value
-            {
-                Id = valueForDeleteDto.Id,
-                Name = valueForDeleteDto.Name
-            };
-
-            var deletedValue = _uow.Values.Delete(valueToDelete);
+            var deletedValue = _uow.Values.Delete(value);
             return _uow.Save() > 0 ? true : false;
         }
 
@@ -69,15 +52,15 @@ namespace Application.Service
             return valueForListDtos;
         }
 
-        public async Task<ValueForListDto> GetByIdAsync(int id, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Value> GetByIdAsync(int id, CancellationToken cancellationToken = default(CancellationToken))
         {
             var value = await _uow.Values.GetByIdAsync(id);
 
-            ValueForListDto valueForListDto = new ValueForListDto();            
-            valueForListDto.Id = value.Id;
-            valueForListDto.Name = value.Name;            
+            //ValueForListDto valueForListDto = new ValueForListDto();
+            //valueForListDto.Id = value.Id;
+            //valueForListDto.Name = value.Name;
 
-            return valueForListDto;
+            return value;
         }
 
         public async Task<bool> IsDuplicateAsync(string name, CancellationToken cancellationToken = default(CancellationToken))

@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Applicationa.Data.Repository
+namespace Application.Data.Repository
 {
     public interface IRepository<TEntity> where TEntity : class
     {

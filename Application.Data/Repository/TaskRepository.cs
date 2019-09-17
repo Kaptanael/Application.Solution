@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Applicationa.Data.DataContext;
-using Applicationa.Model;
+using Application.Data.DataContext;
+using Application.Model;
 
-namespace Applicationa.Data.Repository
+namespace Application.Data.Repository
 {
     public class TaskRepository : Repository<UserTask>, ITaskRepository
     {

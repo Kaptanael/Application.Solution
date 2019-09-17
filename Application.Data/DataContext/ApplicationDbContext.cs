@@ -1,7 +1,7 @@
-﻿using Applicationa.Model;
+﻿using Application.Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace Applicationa.Data.DataContext
+namespace Application.Data.DataContext
 {
     public class ApplicationDbContext:DbContext
     {
